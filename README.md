@@ -11,17 +11,17 @@ It is a python based command line tool for managing your account information.
 1. accman help menu: `python accman.py --help`
 [![open source](/images/img1.png)]()
 2. To write account: `python accman.py --write`
-[![open source](/images/img2 - write.png)]()
+[![open source](/images/img2.png)]()
 3. To read the account details: `python accman.py --read Twitter`
-[![open source](/images/img3 - read.png)]()
+[![open source](/images/img3.png)]()
 4. Listing all available accounts: `python accman.py --list`
-[![open source](/images/img4 - list.png)]()
+[![open source](/images/img4.png)]()
 5. To delete an account: `python accman.py --delete`
-[![open source](/images/img5 - delete.png)]()
+[![open source](/images/img5.png)]()
 6. Clean up all the stored account data: `python accman.py --clean`
-[![open source](/images/img6 - clean.png)]()
+[![open source](/images/img6.png)]()
 5. Setting up Globall password: `python accman.py --gpass`
-[![open source](/images/img7 - gpass.png)]()
+[![open source](/images/img7.png)]()
 
 ### Installation
 
