@@ -7,22 +7,40 @@
 ## Your own very secure account manager.
 It is a python based command line tool for managing your account information.
 
-### Usage:
+### Usage examples:
 1. accman help menu: `python accman.py --help`
-[![open source](/images/img1.png)]()
+[![help](/images/img1.png)]()
 2. To write account: `python accman.py --write`
-[![open source](/images/img2.png)]()
+[![write](/images/img2.png)]()
 3. To read the account details: `python accman.py --read Twitter`
-[![open source](/images/img3.png)]()
+[![read](/images/img3.png)]()
 4. Listing all available accounts: `python accman.py --list`
-[![open source](/images/img4.png)]()
+[![list](/images/img4.png)]()
 5. To delete an account: `python accman.py --delete`
-[![open source](/images/img5.png)]()
+[![delete](/images/img5.png)]()
 6. Clean up all the stored account data: `python accman.py --clean`
-[![open source](/images/img6.png)]()
+[![clean](/images/img6.png)]()
 5. Setting up Globall password: `python accman.py --gpass`
-[![open source](/images/img7.png)]()
+[![gpass](/images/img7.png)]()
+
+### Requirements
+1. python >= 3.7.4
 
 ### Installation
+1. To run with python (as used in examples)
+```terminal
+>git clone https://github.com/Waqar-Arain/accman.git
+>cd accman
+>pip install -r requirements.txt
+>cd accman
+>python accman.py```
+
+2. To use as a command on your system
+```terminal
+>git clone https://github.com/Waqar-Arain/accman.git
+>cd accman
+>pip install -e .```
+
 
 ### Bug?
+Notify me at https://twitter.com/WaqarAra1n
