@@ -311,17 +311,21 @@ def globalPass(flag=None):
 
             #check check
             globalPass = getpass('Please enter global password to proceed: ')
-            with open(f'{files_path}/accman/data.yml', 'r') as d:
-                y = yaml.safe_load(d)
-                salt = y['GlobalSalt']
-            #generate a key
-            key = scrypt.hash(globalPass, salt, 2048, 8, 1, 32)
-            key = base64.urlsafe_b64encode(key)
+            try:
+                with open(f'{files_path}/accman/data.yml', 'r') as d:
+                    y = yaml.safe_load(d)
+                    salt = y['GlobalSalt']
+                #generate a key
+                key = scrypt.hash(globalPass, salt, 2048, 8, 1, 32)
+                key = base64.urlsafe_b64encode(key)
 
-            with open(f'{files_path}/accman/data.yml', 'r') as d:
-                y = yaml.safe_load(d)
-                key2 = y['GlobalPassword']
-                key2 = str(key2).replace('{', '').replace('}', '')
+                with open(f'{files_path}/accman/data.yml', 'r') as d:
+                    y = yaml.safe_load(d)
+                    key2 = y['GlobalPassword']
+                    key2 = str(key2).replace('{', '').replace('}', '')
+            except TypeError:
+                print(colored('\nFirst set up the global password!\n', 'red', attrs=['bold']))
+                exit(0)
             #compare the keys
             if str(key) == str(key2):
                 return True
