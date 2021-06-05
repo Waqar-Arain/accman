@@ -1,12 +1,14 @@
 # accman
 
 <a href="https://github.com/Waqar-Arain/accman"><img src="https://img.shields.io/badge/accman-0.0.1-brightgreen.svg" alt="Version" data-canonical-src="https://img.shields.io/badge/accman-0.0.1-brightgreen.svg?maxAge=259200" style="max-width:100%;"></a>
-<a href="https://github.com/Waqar-Arain/accman"><img src="https://img.shields.io/badge/Supported%20OS-Windows-brightgreengreen.svg" alt="Build" data-canonical-src="https://img.shields.io/badge/Supported%20Windows-brightgreengreen.svg" style="max-width:100%;"></a>
-<a href="https://github.com/Waqar-Arain/accman"><img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"></a>
 <a href="https://github.com/Waqar-Arain/accman"><img src="https://img.shields.io/packagist/l/doctrine/orm.svg" alt="Build" data-canonical-src="https://img.shields.io/packagist/l/doctrine/orm.svg" style="max-width:100%;"></a>
 
 ## Your own very secure account manager.
 It is a python based command line tool for managing your account information. It uses key-definition-function algorithm to encrypt account details which uses a password and a salt to generate a key for encryption/decryption, so no one can decrypt your account information even if they have access to your computer, this tool, or the files where the information is stored.
+
+### Works on:
+- Windows
+- Linux
 
 ### Usage examples:
 1. accman help menu: `python accman.py --help`
@@ -46,4 +48,4 @@ It is a python based command line tool for managing your account information. It
 
 ### Bugs? Information?
 Notify me 
-- Twitter: @_waqarArain/
+- Twitter: @_waqarArain
