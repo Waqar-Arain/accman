@@ -1,6 +1,6 @@
 colorama==0.4.3
 cryptography==2.8
 pyperclip==1.8.0
-PyYAML==5.3.1
+PyYAML==5.4
 scrypt==0.8.13
 termcolor==1.1.0
