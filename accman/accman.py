@@ -41,10 +41,10 @@ def main():
 def loc():
     #setting up path
     files_path = os.path.expanduser('~')
-    if os.path.exists(f'{files_path}/accman/') == True:
+    if os.path.exists(f'{files_path}/.accman/') == True:
         pass
     else:
-        os.mkdir(files_path+'/accman/')
+        os.mkdir(files_path+'/.accman/')
     return files_path
 
 def getData(name, encrypted_data):
@@ -54,7 +54,7 @@ def getData(name, encrypted_data):
     files_path = loc()
     try:
         #getting salt
-        with open(f'{files_path}/accman/salt.yml', 'r') as d:
+        with open(f'{files_path}/.accman/salt.yml', 'r') as d:
             y = yaml.safe_load(d)
             try:
                 salt = y[name]
@@ -107,26 +107,26 @@ def keygen(name=None, passwrd=None):
     try:
         #saving generated salt
         if passwrd != None:
-            with open(f'{files_path}/accman/data.yml', 'r') as d:
+            with open(f'{files_path}/.accman/data.yml', 'r') as d:
                 y = yaml.safe_load(d)
                 y.update(passphraseDict)
-                encryptedFile = open(f'{files_path}/accman/data.yml', 'w')
+                encryptedFile = open(f'{files_path}/.accman/data.yml', 'w')
                 encryptedFile.write(yaml.safe_dump(y,  sort_keys=False))
                 encryptedFile.close()
         else:
-            with open(f'{files_path}/accman/salt.yml', 'r') as d:
+            with open(f'{files_path}/.accman/salt.yml', 'r') as d:
                 y = yaml.safe_load(d)
                 y.update(passphraseDict)
-                encryptedFile = open(f'{files_path}/accman/salt.yml', 'w')
+                encryptedFile = open(f'{files_path}/.accman/salt.yml', 'w')
                 encryptedFile.write(yaml.safe_dump(y,  sort_keys=False))
                 encryptedFile.close()
     except:
         if passwrd != None:
-            encryptedFile = open(f'{files_path}/accman/data.yml', 'w')
+            encryptedFile = open(f'{files_path}/.accman/data.yml', 'w')
             encryptedFile.write(yaml.safe_dump(passphraseDict,  sort_keys=False))
             encryptedFile.close()
         else:
-            encryptedFile = open(f'{files_path}/accman/salt.yml', 'w')
+            encryptedFile = open(f'{files_path}/.accman/salt.yml', 'w')
             encryptedFile.write(yaml.safe_dump(passphraseDict,  sort_keys=False))
             encryptedFile.close()
 
@@ -139,7 +139,7 @@ def doesAccountExists(name):
     files_path = loc()
     try:
         #checking if the typed account exists or not
-        with open(f'{files_path}/accman/information.yml', 'r') as d:
+        with open(f'{files_path}/.accman/information.yml', 'r') as d:
             y = yaml.safe_load(d)
             if name in y:
                 user_input = input('Account already exist, do you want to overwrite your account? (yes/no) ')
@@ -183,15 +183,15 @@ def data_writer():
     files_path = loc()
     try:
         #saving account information
-        with open(f'{files_path}/accman/information.yml', 'r') as d:
+        with open(f'{files_path}/.accman/information.yml', 'r') as d:
             y = yaml.safe_load(d)
             y.update(data)
-            encryptedFile = open(f'{files_path}/accman/information.yml', 'w')
+            encryptedFile = open(f'{files_path}/.accman/information.yml', 'w')
             encryptedFile.write(yaml.safe_dump(y,  sort_keys=False))
             print(colored('\nData written successfully!\n','cyan'))
             encryptedFile.close()
     except:
-        encryptedFile = open(f'{files_path}/accman/information.yml', 'w')
+        encryptedFile = open(f'{files_path}/.accman/information.yml', 'w')
         encryptedFile.write(yaml.safe_dump(data,  sort_keys=False))
         print(colored('\nData written successfully!\n','cyan'))
         encryptedFile.close()
@@ -200,7 +200,7 @@ def data_reader(usr_input):
     files_path = loc()
     try:
         #fetching file information
-        with open(f'{files_path}/accman/information.yml', 'r') as d:
+        with open(f'{files_path}/.accman/information.yml', 'r') as d:
             y = yaml.safe_load(d)
             try:
                 encrypted_account = y[usr_input]
@@ -231,7 +231,7 @@ def listingAccounts():
     files_path = loc()
     try:
         #listing all the accounts in the files
-        with open(f'{files_path}/accman/information.yml', 'r') as d:
+        with open(f'{files_path}/.accman/information.yml', 'r') as d:
             y = yaml.safe_load(d)
         if y == {}:
             print(colored("\nProgram doesn't find any account!\n",'cyan'))
@@ -248,9 +248,9 @@ def deletingAccount():
 
     files_path = loc()
     try:
-        with open(f'{files_path}/accman/salt.yml', 'r') as saltData:
+        with open(f'{files_path}/.accman/salt.yml', 'r') as saltData:
             d = yaml.safe_load(saltData)
-        with open(f'{files_path}/accman/information.yml', 'r') as data:
+        with open(f'{files_path}/.accman/information.yml', 'r') as data:
             y = yaml.safe_load(data)
             # list all the accounts
             accounts = list(y.keys())
@@ -262,11 +262,11 @@ def deletingAccount():
                 del d[user_input]
                 del y[user_input]
                 # update data in the file
-                encryptedData = open(f'{files_path}/accman/information.yml', 'w')
+                encryptedData = open(f'{files_path}/.accman/information.yml', 'w')
                 encryptedData.write(yaml.safe_dump(y,  sort_keys=False))
                 encryptedData.close()
                 # update data in the salt file
-                encryptedData = open(f'{files_path}/accman/salt.yml', 'w')
+                encryptedData = open(f'{files_path}/.accman/salt.yml', 'w')
                 encryptedData.write(yaml.safe_dump(d,  sort_keys=False))
                 encryptedData.close()
 
@@ -287,11 +287,11 @@ def cleaning():
     if usr_input == 'yes':
         #cleaning info file
         files_path = loc()
-        encryptedData = open(f'{files_path}/accman/information.yml', 'w')
+        encryptedData = open(f'{files_path}/.accman/information.yml', 'w')
         encryptedData.write(yaml.safe_dump({},  sort_keys=False))
         encryptedData.close()
         #cleaning salt file
-        encryptedData = open(f'{files_path}/accman/salt.yml', 'w')
+        encryptedData = open(f'{files_path}/.accman/salt.yml', 'w')
         encryptedData.write(yaml.safe_dump({},  sort_keys=False))
         encryptedData.close()
     
@@ -306,20 +306,20 @@ def globalPass(flag=None):
     #terminators call
     if flag == 1:
         try:
-            with open(f'{files_path}/accman/data.yml', 'r') as d:
+            with open(f'{files_path}/.accman/data.yml', 'r') as d:
                 y = yaml.safe_load(d)
 
             #check check
             globalPass = getpass('Please enter global password to proceed: ')
             try:
-                with open(f'{files_path}/accman/data.yml', 'r') as d:
+                with open(f'{files_path}/.accman/data.yml', 'r') as d:
                     y = yaml.safe_load(d)
                     salt = y['GlobalSalt']
                 #generate a key
                 key = scrypt.hash(globalPass, salt, 2048, 8, 1, 32)
                 key = base64.urlsafe_b64encode(key)
 
-                with open(f'{files_path}/accman/data.yml', 'r') as d:
+                with open(f'{files_path}/.accman/data.yml', 'r') as d:
                     y = yaml.safe_load(d)
                     key2 = y['GlobalPassword']
                     key2 = str(key2).replace('{', '').replace('}', '')
@@ -339,7 +339,7 @@ def globalPass(flag=None):
     #writers call
     if flag == 0:
         try:
-            with open(f'{files_path}/accman/data.yml', 'r') as d:
+            with open(f'{files_path}/.accman/data.yml', 'r') as d:
                 y = yaml.safe_load(d)
                 if 'GlobalPassword' in y:
                     return True
@@ -350,7 +350,7 @@ def globalPass(flag=None):
             'GlobalPassword':{key}
             }
             # save the key in information file
-            encryptedFile = open(f'{files_path}/accman/data.yml', 'a')
+            encryptedFile = open(f'{files_path}/.accman/data.yml', 'a')
             encryptedFile.write(yaml.safe_dump(data,  sort_keys=False))
             encryptedFile.close()
 
